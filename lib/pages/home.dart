@@ -139,7 +139,7 @@ class _HomeState extends State<Home> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Hello Sanjana,",
+                      "Hello,",
                       style: AppWidget.boldTextFieldStyle(),
                     ),
                     const Icon(Icons.shopping_cart, color: Colors.black),

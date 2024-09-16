@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../widget/widget_support.dart';
 import '../pages/signup.dart';
 import '../pages/bottomnav.dart';
+import '../admin/admin_login.dart'; // Make sure to create this file
 
 class LogIn extends StatefulWidget {
   const LogIn({super.key});
@@ -158,8 +159,7 @@ class _LogInState extends State<LogIn> {
                                     password = userPasswordController.text;
                                   });
                                 }
-                                  await userLogin();
-
+                                await userLogin();
                               },
                               child: Material(
                                 elevation: 5.0,
@@ -200,6 +200,27 @@ class _LogInState extends State<LogIn> {
                                 ),
                               ),
                             ),
+                            SizedBox(height: 20.0),
+                            Center(
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => AdminLogin()),
+                                  );
+                                },
+                                child: Text(
+                                  "Admin Login",
+                                  style: TextStyle(
+                                    color: Colors.blue,
+                                    fontSize: 16.0,
+                                    fontWeight: FontWeight.bold,
+                                    decoration: TextDecoration.underline,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            SizedBox(height: 20.0),
                           ],
                         ),
                       ),

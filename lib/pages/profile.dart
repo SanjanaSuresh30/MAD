@@ -59,15 +59,18 @@ class _ProfileState extends State<Profile> {
 
   Future<void> _signOut() async {
     try {
+      print("Attempting to sign out");
       await AuthMethods().SignOut();
-      // After sign-out, navigate to the login screen and remove all previous routes
+      print("Sign out successful");
+
+      print("Attempting to navigate to Login screen");
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => const LogIn()),
       );
-
+      print("Navigation should be complete");
     } catch (e) {
-      // Handle errors
+      print("Error during sign out: $e");
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Failed to sign out: $e')),
       );
@@ -167,12 +170,10 @@ class _ProfileState extends State<Profile> {
           const SizedBox(height: 30.0),
           buildProfileInfo("Terms and Conditions", ""),
           const SizedBox(height: 30.0),
-          GestureDetector(
+          buildProfileButton(
+            Icons.logout,
+            "Log Out",
             onTap: _signOut,
-            child: buildProfileButton(
-              Icons.logout,
-              "Log Out",
-            ),
           ),
         ],
       ),
@@ -229,9 +230,9 @@ class _ProfileState extends State<Profile> {
     );
   }
 
-  Widget buildProfileButton(IconData icon, String label) {
+  Widget buildProfileButton(IconData icon, String label, {VoidCallback? onTap}) {
     return GestureDetector(
-      onTap: () {},
+      onTap: onTap,
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 20.0),
         child: Material(

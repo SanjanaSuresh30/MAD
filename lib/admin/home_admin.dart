@@ -32,7 +32,6 @@ class _HomeAdminState extends State<HomeAdmin> {
                     decoration: BoxDecoration(
                       color: Colors.black,
                       borderRadius: BorderRadius.circular(10),
-
                     ),
                     child: Row(children: [
                       Padding(padding: EdgeInsets.all(6.0),
@@ -42,7 +41,29 @@ class _HomeAdminState extends State<HomeAdmin> {
                   ),
                 ),
               ),
-            )
+            ),
+            Spacer(), // This will push the button to the bottom
+            GestureDetector(
+              onTap: () {
+                Navigator.of(context).popUntil((route) => route.isFirst);
+              },
+              child: Container(
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                decoration: BoxDecoration(
+                  color: Colors.red,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Text(
+                  "Back to Login",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(height: 20), // Add some bottom padding
           ],
         ),
       ),
